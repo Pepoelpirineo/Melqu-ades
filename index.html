@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>MELQUÍADES</title>
+<link rel="stylesheet" href="jquery.fancybox.css"> 
+<style>
+	body {
+  background: url('images/fondo.png') no-repeat center center fixed;
+  background-size: cover;
+  cursor: url('cursors/cursor_gru.cur'), auto;
+  min-height: 100vh;
+  transition: background-image 0.2s ease-in-out;
+}
+  .hidden {
+    display: none;
+  }
+
+  .botonera {
+  position: absolute; 
+  top: 100px; 
+  right: 50px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-end; 
+}
+
+  button {
+  margin: 10px 0;
+  cursor: url('cursors/cursor_iluminati.cur'), auto; 
+  display: block;  
+}
+
+
+
+  </style>
+  </head>
+<body>
+	
+	<h1 style="font-family: Arial, sans-serif; font-size: 50px; color: #333333; text-align: center; text-shadow: 2px 2px 8px white;">
+		MELQUÍADES </h1>
+	
+	  <img id="kramer" src="images/kramer.jpg" alt="Kramer" style="position: absolute; width: 200px; top: 100px; left: 100px; cursor: url('cursors/cursor_gru.cur'), pointer;">
+	
+	  <audio id="sound_kramer1" src="sounds/sound_kramer1.mp3"></audio>
+	  <audio id="sound_kramer2" src="sounds/sound_kramer2.mp3"></audio>
+    <audio id="sound_kramer3" src="sounds/sound_kramer3.mp3"></audio>
+    <audio id="sound_kramer4" src="sounds/sound_kramer4.mp3"></audio>
+    <audio id="sound_kramer5" src="sounds/sound_kramer5.mp3"></audio>
+    <audio id="sound_kramer6" src="sounds/sound_kramer6.mp3"></audio>
+	  <audio id="sound_kramer7" src="sounds/sound_kramer7.mp3"></audio>
+
+    <div class="botonera">
+
+    <button class="boton-What remains" data-fancybox-trigger="What remains">What remains</button>
+    <button class="boton-After the end" data-fancybox-trigger="After the end">After the end</button>
+    <button class="boton-Is not sorrow but" data-fancybox-trigger="Is not sorrow but">Is not sorrow but</button>
+    <button class="boton-The memory of touch" data-fancybox-trigger="The memory of touch">The memory of touch</button>
+ 
+    <a href="images/remains.png" data-fancybox="What remains" class="hidden">
+      <img src="images/remains.png" alt="whatremains">
+    </a>
+    <a href="images/remains1.png" data-fancybox="What remains" class="hidden">
+      <img src="images/remains1.png" alt="whatremains"> 
+    </a>
+    <a href="images/remains2.png" data-fancybox="What remains" class="hidden">
+      <img src="images/remains2.png" alt="whatremains"> 
+    </a>
+    <a href="images/remains3.png" data-fancybox="What remains" class="hidden">
+      <img src="images/remains3.png" alt="whatremains"> 
+    </a>
+
+    <a href="images/after.png" data-fancybox="After the end" class="hidden">
+      <img src="images/after.png" alt="after"> 
+    </a>
+    <a href="images/after1.png" data-fancybox="After the end" class="hidden">
+      <img src="images/after1.png" alt="after"> 
+    </a>
+    <a href="images/after2.png" data-fancybox="After the end" class="hidden">
+      <img src="images/after2.png" alt="after"> 
+    </a>
+    <a href="images/after3.png" data-fancybox="After the end" class="hidden">
+      <img src="images/after3.png" alt="after"> 
+    </a>
+
+    <a href="images/sorrow.png" data-fancybox="Is not sorrow but" class="hidden">
+      <img src="images/sorrow.png" alt="sorrow"> 
+    </a>
+    <a href="images/sorrow1.png" data-fancybox="Is not sorrow but" class="hidden">
+      <img src="images/sorrow1.png" alt="sorrow"> 
+    </a>
+    <a href="images/sorrow2.png" data-fancybox="Is not sorrow but" class="hidden">
+      <img src="images/sorrow2.png" alt="sorrow"> 
+    </a>
+    <a href="images/sorrow3.png" data-fancybox="Is not sorrow but" class="hidden">
+      <img src="images/sorrow3.png" alt="sorrow"> 
+    </a>
+
+    <a href="images/memory.png" data-fancybox="The memory of touch" class="hidden">
+      <img src="images/memory.png" alt="memory"> 
+    </a>
+    <a href="images/memory1.png" data-fancybox="The memory of touch" class="hidden">
+      <img src="images/memory1.png" alt="memory"> 
+    </a>
+    <a href="images/memory2.png" data-fancybox="The memory of touch" class="hidden">
+      <img src="images/memory2.png" alt="memory"> 
+    </a>
+    <a href="images/memory3.png" data-fancybox="The memory of touch" class="hidden">
+      <img src="images/memory3.png" alt="memory"> 
+    </a>
+   
+    <div id="ojo" style="
+  position: absolute;
+  top: 320px;
+  left: -295%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 0, 0, 0);
+  opacity: 0.0;
+  cursor: url('cursors/cursor_gru.cur'), auto;
+  "></div>
+
+
+<script>
+	
+    const kramer = document.getElementById('kramer');
+
+    
+    const sonidos = [
+      document.getElementById('sound_kramer1'),
+      document.getElementById('sound_kramer2'),
+      document.getElementById('sound_kramer3'),
+      document.getElementById('sound_kramer4'),
+      document.getElementById('sound_kramer5'),
+      document.getElementById('sound_kramer6'),
+	  document.getElementById('sound_kramer7')
+    ];
+
+    
+    let contador = 0;
+
+   
+    kramer.addEventListener('click', function() {
+      
+      if (contador < sonidos.length) {
+
+        sonidos[contador].currentTime = 0;
+        sonidos[contador].play();
+
+      
+        kramer.style.opacity = 0;
+
+        setTimeout(function() {
+        
+          const randomTop = Math.random() * (window.innerHeight - 200);
+          const randomLeft = Math.random() * (window.innerWidth - 200);
+
+ 
+          kramer.style.top = randomTop + 'px';
+          kramer.style.left = randomLeft + 'px';
+
+      
+          kramer.style.opacity = 1;
+        }, 300);
+
+        contador++;
+      }
+
+      if (contador >= sonidos.length) {
+        kramer.style.display = 'none';
+      }
+    });
+
+  </script>
+
+<script>
+ 
+  function parpadear() {
+    document.body.style.backgroundImage = "url('images/fondo1.png')";
+    setTimeout(function() {
+      document.body.style.backgroundImage = "url('images/fondo.png')";
+    }, 300); 
+  }
+
+  
+  setInterval(parpadear, 6000);
+
+  
+  const ojo = document.getElementById('ojo');
+
+  ojo.addEventListener('click', function(event) {
+    event.stopPropagation(); 
+    parpadear();
+  });
+
+</script>
+  <script src="jquery-3.5.1.min.js"></script>
+   <script src="jquery.fancybox.js"></script>
+   <script>
+    $('[data-fancybox]').fancybox();
+  </script>
+
+</body>
+</html>
